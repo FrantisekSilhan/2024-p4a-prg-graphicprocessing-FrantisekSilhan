@@ -1,9 +1,6 @@
-﻿namespace ParallelGraphicProcessing
-{
-    public partial class App : Application
-    {
-        public App()
-        {
+﻿namespace ParallelGraphicProcessing {
+    public partial class App : Application {
+        public App() {
             InitializeComponent();
 
             MainPage = new AppShell();

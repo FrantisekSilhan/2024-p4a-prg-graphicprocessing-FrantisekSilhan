@@ -1,9 +1,6 @@
-﻿namespace ParallelGraphicProcessing
-{
-    public partial class AppShell : Shell
-    {
-        public AppShell()
-        {
+﻿namespace ParallelGraphicProcessing {
+    public partial class AppShell : Shell {
+        public AppShell() {
             InitializeComponent();
         }
     }

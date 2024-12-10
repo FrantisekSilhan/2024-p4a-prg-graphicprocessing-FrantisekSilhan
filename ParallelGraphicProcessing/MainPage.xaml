@@ -1,23 +1,66 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="using:ParallelGraphicProcessing.Converters"
              x:Class="ParallelGraphicProcessing.MainPage">
-    <Grid RowDefinitions="*, Auto" Padding="10" RowSpacing="10">
+    <Grid RowDefinitions="*, Auto, Auto, Auto" Padding="10" RowSpacing="10">
         <Image x:Name="MyImage"
                Aspect="AspectFit"
                Grid.Row="0"
                BackgroundColor="LightGray" />
-        <ScrollView Grid.Row="1">
+
+        <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto,Auto" ColumnSpacing="10">
+            <Button Grid.Column="0"
+                    Text="Vybrat obrázek"
+                    x:Name="PickImageBtn"
+                    Clicked="PickImageBtn_Clicked" />
+            <Button Grid.Column="1"
+                    Text="Zrušit"
+                    x:Name="CancelBtn"
+                    Clicked="CancelBtn_Clicked"
+                    IsEnabled="False" />
+            <Button Grid.Column="2"
+                    Text="Obnovit"
+                    x:Name="RestoreBtn"
+                    Clicked="RestoreBtn_Clicked" />
+        </Grid>
+
+        <ScrollView Grid.Row="2" Orientation="Horizontal">
             <HorizontalStackLayout Spacing="10">
-                <Button Text="Vybrat obrázek" x:Name="PickImageBtn" Clicked="PickImageBtn_Clicked" />
-                <Button Text="Obnovit" x:Name="RestoreBtn" Clicked="RestoreBtn_Clicked" />
-                <Button Text="Filtr synchronně" x:Name="RedFilterUnsafeBtn" Clicked="RedFilterUnsafeBtn_Clicked" />
-                <Button Text="Filtr synchronně unsafe" x:Name="RedFilterBtn" Clicked="RedFilterBtn_Clicked" />
-                <Button Text="Filtr asynchronně" x:Name="RedFilterAsyncBtn" Clicked="RedFilterAsyncBtn_Clicked" />
-                <Button Text="Filtr paralelně unsafe" x:Name="RedFilterParallelBtn" Clicked="RedFilterParallelBtn_Clicked" />
-                <Button Text="Zrušit" x:Name="CancelBtn" Clicked="CancelBtn_Clicked" IsEnabled="False"/>
+                <Button Text="Sync Filtr"
+                        x:Name="SyncFilterBtn"
+                        Clicked="FilterButtonClicked"
+                        CommandParameter="SYNC" />
+                <Button Text="Sync Unsafe Filtr"
+                        x:Name="SyncUnsafeFilterBtn"
+                        Clicked="FilterButtonClicked"
+                        CommandParameter="SYNC_UNSAFE" />
+                <Button Text="Async Filtr"
+                        x:Name="AsyncFilterBtn"
+                        Clicked="FilterButtonClicked"
+                        CommandParameter="ASYNC" />
+                <Button Text="Parallel Filtr"
+                        x:Name="ParallelFilterBtn"
+                        Clicked="FilterButtonClicked"
+                        CommandParameter="PARALLEL" />
+                <Button Text="Parallel Unsafe Filtr"
+                        x:Name="ParallelUnsafeFilterBtn"
+                        Clicked="FilterButtonClicked"
+                        CommandParameter="PARALLEL_UNSAFE" />
+                <Button Text="Detekce hran"
+                        x:Name="EdgeDetectionBtn"
+                        Clicked="FilterButtonClicked"
+                        CommandParameter="EDGE_DETECTION" />
+                <Button Text="Sepia efekt"
+                        x:Name="SepiaEffectBtn"
+                        Clicked="FilterButtonClicked"
+                        CommandParameter="SEPIA_EFFECT" />
             </HorizontalStackLayout>
         </ScrollView>
-        <ActivityIndicator x:Name="MyActivityIndicator" IsRunning="True" IsVisible="False" Grid.Row="0" />
+
+        <ActivityIndicator x:Name="MyActivityIndicator"
+                           IsRunning="True"
+                           IsVisible="False"
+                           Grid.Row="0" />
     </Grid>
 </ContentPage>
