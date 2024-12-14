@@ -75,7 +75,6 @@ namespace ParallelGraphicProcessing {
         }
 
         private async void FilterButtonClicked(object? sender, EventArgs e) {
-            // Get the filter type from the button's CommandParameter
             if (sender is Button button && button.CommandParameter is string selectedFilter) {
                 var token = StartProcessing(_originalBitmap, _isProcessing);
 
